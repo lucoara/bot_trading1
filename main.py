@@ -14,13 +14,13 @@ from datetime import datetime
 load_dotenv()
 
 # Configurar Telegram Bot
-TELEGRAM_BOT_TOKEN = os.getenv7880857109:AAG7Oe3fKo48MI9OgNSkYyJ2yt6g-w-oMAQ
-TELEGRAM_CHAT_ID = os.getenv7268477518
+TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
 bot = Bot(token=TELEGRAM_BOT_TOKEN)
 
 # Conectar à Binance
 try:
-    binance_client = Client(os.getenv eDUxgm1zlFrbSVAVQ4vxhxezCcSw1BrzWdOqK0XsgQ1BepTHme1oGHM0rxy0Wfc4.strip(), os.getenv ALAiEQnXw8LyEjRExPaO7dWMT9mJC0J61SOWqA6MPLdbh9SEe3HKTaXjBRm8YWnN.strip())
+    binance_client = Client(os.getenv("BINANCE_API_KEY").strip(), os.getenv("BINANCE_SECRET_KEY").strip())
     print("✅ Conexão com Binance OK!")
 except Exception as e:
     print(f"❌ Erro na conexão com a Binance: {e}")
@@ -28,9 +28,9 @@ except Exception as e:
 # Conectar à Bitget via CCXT
 try:
     bitget = ccxt.bitget({
-        'apiKey': os.getenv bg_e97592c72c12a2b422fb3ec02ba4ae8e .strip(),
-        'secret': os.getenv 22e22c52af06f1fb4bb1b9ef5d290527b709104f62fc5cbe73cc985b318c2408.strip (),
-        'password': os.getenv lucoara86075260 .strip(),
+        'apiKey': os.getenv("BITGET_API_KEY").strip(),
+        'secret': os.getenv("BITGET_SECRET_KEY").strip(),
+        'password': os.getenv("BITGET_PASS_PHRASE").strip(),
         'enableRateLimit': True
     })
     print("✅ Conexão com Bitget OK!")
@@ -108,6 +108,6 @@ async def testar_conexoes():
         await enviar_mensagem_telegram(f"❌ Erro na conexão: {e}")
 
 # Iniciar monitoramento
-if __name__ == "__main__":
+if name == "__main__":
     asyncio.run(testar_conexoes())
     asyncio.run(monitorar_ativos())
