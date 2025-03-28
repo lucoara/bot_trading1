@@ -1,0 +1,8 @@
+python-binance
+bitget-api
+python-telegram-bot
+pandas
+numpy
+ta
+dotenv
+requests
