@@ -1,8 +1,9 @@
 python-binance
-bitget-api
 python-telegram-bot
 pandas
 numpy
 ta
-dotenv
+python-dotenv
+ccxt
 requests
+

@@ -14,14 +14,14 @@ import time
 load_dotenv()
 
 # Configurar Telegram Bot
-TELEGRAM_BOT_TOKEN = os.getenv("7880857109:AAG7Oe3fKo48MI9OgNSkYyJ2yt6g-w-oMAQ")
+TELEGRAM_BOT_TOKEN = os.getenv 7880857109:AAG7Oe3fKo48MI9OgNSkYyJ2yt6g-w-oMAQ
 bot = Bot(token=TELEGRAM_BOT_TOKEN)
 
 # Conectar à Binance
-binance_client = Client(os.getenv("eDUxgm1zlFrbSVAVQ4vxhxezCcSw1BrzWdOqK0XsgQ1BepTHme1oGHM0rxy0Wfc4"), os.getenv("ALAiEQnXw8LyEjRExPaO7dWMT9mJC0J61SOWqA6MPLdbh9SEe3HKTaXjBRm8YWnN"))
+binance_client = Client(os.getenv eDUxgm1zlFrbSVAVQ4vxhxezCcSw1BrzWdOqK0XsgQ1BepTHme1oGHM0rxy0Wfc4 , os.getenv ALAiEQnXw8LyEjRExPaO7dWMT9mJC0J61SOWqA6MPLdbh9SEe3HKTaXjBRm8YWnN
 
 # Conectar à Bitget
-bitget_client = RestClient(os.getenv("bg_e97592c72c12a2b422fb3ec02ba4ae8e"), os.getenv("22e22c52af06f1fb4bb1b9ef5d290527b709104f62fc5cbe73cc985b318c2408"), os.getenv("PASS_PHRASE"))
+bitget_client = RestClient(os.getenv bg_e97592c72c12a2b422fb3ec02ba4ae8e , os.getenv 22e22c52af06f1fb4bb1b9ef5d290527b709104f62fc5cbe73cc985b318c2408 , os.getenv lucoara86075260
 
 # Lista de ativos para monitorar
 ativos = ['BTCUSDT', 'ETHUSDT', 'XRPUSDT', 'DOGEUSDT', 'ADAUSDT', 'BNBUSDT', 'SOLUSDT', 'DOTUSDT', 'MATICUSDT', 'AVAXUSDT', 'LTCUSDT', 'TRXUSDT', 'LINKUSDT', 'XLMUSDT', 'ATOMUSDT', 'ALGOUSDT', 'VETUSDT', 'ICPUSDT', 'FILUSDT', 'EGLDUSDT', 'MANAUSDT', 'SANDUSDT', 'AXSUSDT', 'AAVEUSDT', 'FTMUSDT']
@@ -73,6 +73,43 @@ def monitorar_ativos():
         for ativo in ativos:
             enviar_sinal_telegram(ativo)
         time.sleep(300)  # Espera 5 minutos
+import os
+from dotenv import load_dotenv
+from bitget.rest import RestClient
+import ccxt
+
+# Carregar variáveis do .env
+load_dotenv()
+
+# Configurar a API da Bitget
+BITGET_API_KEY = os.getenv("BITGET_API_KEY")
+BITGET_SECRET_KEY = os.getenv("BITGET_SECRET_KEY")
+
+client = RestClient(BITGET_API_KEY, BITGET_SECRET_KEY, "passphrase")
+
+# Testar conexão Bitget
+try:
+    server_time = client.common_get_system_time()
+    print(f"Conexão com Bitget OK! Server Time: {server_time}")
+except Exception as e:
+    print(f"Erro na conexão com a Bitget: {e}")
+
+# Configurar a API da Binance
+BINANCE_API_KEY = os.getenv("BINANCE_API_KEY")
+BINANCE_SECRET_KEY = os.getenv("BINANCE_SECRET_KEY")
+
+exchange = ccxt.binance({
+    'apiKey': BINANCE_API_KEY,
+    'secret': BINANCE_SECRET_KEY,
+    'options': {'defaultType': 'spot'}
+})
+
+# Testar conexão Binance
+try:
+    balance = exchange.fetch_balance()
+    print("Conexão com Binance OK!")
+except Exception as e:
+    print(f"Erro na conexão com a Binance: {e}")
 
 # Iniciar monitoramento
 monitorar_ativos()
