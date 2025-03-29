@@ -108,6 +108,7 @@ async def testar_conexoes():
         await enviar_mensagem_telegram(f"❌ Erro na conexão: {e}")
 
 # Iniciar monitoramento
-if name == "__main__":
+if __name__ == "__main__":
+
     asyncio.run(testar_conexoes())
     asyncio.run(monitorar_ativos())
