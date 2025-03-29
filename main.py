@@ -12,6 +12,9 @@ from datetime import datetime
 
 # Carregar variáveis do arquivo .env
 load_dotenv()
+print("API_KEY:", os.getenv("BITGET_API_KEY"))
+print("SECRET_KEY:", os.getenv("BITGET_SECRET_KEY"))
+print("PASS_PHRASE:", os.getenv("BITGET_PASS_PHRASE"))
 
 # Configurar Telegram Bot
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
